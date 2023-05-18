@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
   const handleToyAdd = (event) => {
@@ -27,6 +28,20 @@ const AddToys = () => {
       available_quantity,
     };
     console.log(newToy);
+    fetch("http://localhost:5000/addtoy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire("Toys added Successfully!", " ", "success");
+          form.reset();
+        }
+      });
   };
   return (
     <div className="mx-auto mt-8">
@@ -45,6 +60,7 @@ const AddToys = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="seller_name"
               type="text"
+              required
               placeholder="Enter seller name"
             />
           </div>
@@ -58,6 +74,7 @@ const AddToys = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="seller_email"
               type="email"
+              required
               placeholder="Enter seller email"
             />
           </div>
@@ -70,6 +87,7 @@ const AddToys = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="toy_name"
+              required
               type="text"
               placeholder="Enter toy name"
             />
@@ -83,6 +101,7 @@ const AddToys = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="available_quantity"
+              required
               type="number"
               placeholder="Enter quantity"
             />
@@ -96,6 +115,7 @@ const AddToys = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="price"
+              required
               type="number"
               placeholder="Enter price"
             />
@@ -110,6 +130,7 @@ const AddToys = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="rating"
               type="number"
+              required
               placeholder="Enter ratings"
             />
           </div>
@@ -122,6 +143,7 @@ const AddToys = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="img"
+              required
               type="text"
               placeholder="Enter toy photo URL"
             />
@@ -152,6 +174,7 @@ const AddToys = () => {
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="description"
+              required
               placeholder="Enter toy details"
             />
           </div>

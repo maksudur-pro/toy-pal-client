@@ -32,20 +32,27 @@ const Header = () => {
               }>
               Home
             </NavLink>
-
             <NavLink
-              to="/about"
+              to="/allToys"
               className={({ isActive }) =>
                 isActive ? "text-blue-500" : "default"
               }>
-              About
+              All Toys
             </NavLink>
+
             <NavLink
               to="/addtoys"
               className={({ isActive }) =>
                 isActive ? "text-blue-500" : "default"
               }>
               Toy Add
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500" : "default"
+              }>
+              About
             </NavLink>
           </ul>
         </div>
@@ -67,7 +74,23 @@ const Header = () => {
             style={{ marginRight: "10px" }}>
             Home
           </NavLink>
+          <NavLink
+            to="/allToys"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "default"
+            }
+            style={{ marginRight: "10px" }}>
+            All Toys
+          </NavLink>
 
+          <NavLink
+            to="/addToys"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "default"
+            }
+            style={{ marginRight: "10px" }}>
+            Toy Add
+          </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>
@@ -75,13 +98,6 @@ const Header = () => {
             }
             style={{ marginRight: "10px" }}>
             About
-          </NavLink>
-          <NavLink
-            to="/addtoys"
-            className={({ isActive }) =>
-              isActive ? "text-blue-500" : "default"
-            }>
-            Toy Add
           </NavLink>
         </ul>
       </div>

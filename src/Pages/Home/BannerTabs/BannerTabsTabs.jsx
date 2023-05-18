@@ -1,169 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import SingleTab from "./SingleTab";
 
 const BannerTabs = () => {
+  const [categoryToys, setCategoryToys] = useState([]);
+  const [toyCategory, setToyCategory] = useState("Cat");
+  console.log(toyCategory);
+  useEffect(() => {
+    fetch(`http://localhost:5000/toys/${toyCategory}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCategoryToys(data);
+      });
+  }, [toyCategory]);
+
+  const handleTabClick = (tabName) => {
+    setToyCategory(tabName);
+  };
   return (
+    <div className="text-center">
+      <div className=" tabs-boxed">
+        <button
+          onClick={() => handleTabClick("Cat")}
+          className={`tab ${toyCategory === "Cat" && "tab-active"}`}>
+          Cat
+        </button>
+        <button
+          onClick={() => handleTabClick("Dog")}
+          className={`tab ${toyCategory === "Dog" && "tab-active"}`}>
+          Dog
+        </button>
+        <button
+          onClick={() => handleTabClick("Horse")}
+          className={`tab ${toyCategory === "Horse" && "tab-active"}`}>
+          Horse
+        </button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
+        {categoryToys.map((toy) => (
+          <SingleTab key={toy._id} toy={toy}></SingleTab>
+        ))}
+      </div>
+    </div>
     // <Tabs className="text-center">
     //   <TabList>
-    //     <Tab>Cat</Tab>
-    //     <Tab>Dog</Tab>
-    //     <Tab>Horse</Tab>
+    //     <Tab onClick={() => handleTabClick("Cat")}>Cat</Tab>
+    //     <Tab onClick={() => handleTabClick("Dog")}>Dog</Tab>
+    //     <Tab onClick={() => handleTabClick("Horse")}>Horse</Tab>
     //   </TabList>
 
     //   <TabPanel>
     //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
+    //       {categoryToys.map((toy) => (
+    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
+    //       ))}
     //     </div>
     //   </TabPanel>
     //   <TabPanel>
     //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
+    //       {categoryToys.map((toy) => (
+    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
+    //       ))}
     //     </div>
     //   </TabPanel>
     //   <TabPanel>
     //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-    //         <figure>
-    //           <img
-    //             src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    //             alt="Shoes"
-    //           />
-    //         </figure>
-    //         <div className="card-body">
-    //           <h2 className="card-title">Shoes!</h2>
-    //           <p>If a dog chews shoes whose shoes does he choose?</p>
-    //           <div className="card-actions justify-end">
-    //             <button className="btn btn-primary">Buy Now</button>
-    //           </div>
-    //         </div>
-    //       </div>
+    //       {categoryToys.map((toy) => (
+    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
+    //       ))}
     //     </div>
     //   </TabPanel>
     // </Tabs>
-    <div className="tabs">
-      <a className="tab tab-lg tab-lifted">Large</a>
-      <a className="tab tab-lg tab-lifted ">Large</a>
-      <a className="tab tab-lg tab-lifted">Large</a>
-    </div>
   );
 };
 
