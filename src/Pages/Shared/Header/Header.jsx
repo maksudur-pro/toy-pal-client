@@ -40,6 +40,13 @@ const Header = () => {
               }>
               About
             </NavLink>
+            <NavLink
+              to="/addtoys"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500" : "default"
+              }>
+              Toy Add
+            </NavLink>
           </ul>
         </div>
         <Link to="/">
@@ -65,8 +72,16 @@ const Header = () => {
             to="/about"
             className={({ isActive }) =>
               isActive ? "text-blue-500" : "default"
-            }>
+            }
+            style={{ marginRight: "10px" }}>
             About
+          </NavLink>
+          <NavLink
+            to="/addtoys"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "default"
+            }>
+            Toy Add
           </NavLink>
         </ul>
       </div>

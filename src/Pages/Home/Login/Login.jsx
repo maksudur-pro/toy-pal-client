@@ -41,10 +41,10 @@ const Login = () => {
           </div>
           <div className="form-control mt-6 gap-2">
             <button className="btn btn-primary">Login</button>
-            <p className="text-center font-bold">OR</p>
+            <p className="divider">OR</p>
           </div>
         </form>
-        <button className="btn btn-outline">
+        <button className="btn btn-outline btn-primary">
           <FaGoogle className="mx-2 text-blue-500" /> Login with Google{" "}
         </button>
       </div>
