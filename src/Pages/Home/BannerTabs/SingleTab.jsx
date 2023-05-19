@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SingleTab = ({ toy }) => {
   const { img, name, _id } = toy;
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card mt-4 shadow-xl">
       <figure>
         <img
           src={img}

@@ -1,11 +1,14 @@
 import React from "react";
 import BannerTabs from "../BannerTabs/BannerTabsTabs";
+import AnimalToyBanner from "../AnimalToyBanner/AnimalToyBanner";
+import OurServices from "../OurServices/OurServices";
 
 const Home = () => {
   return (
     <div>
-      <h1>This is Home</h1>
+      <AnimalToyBanner></AnimalToyBanner>
       <BannerTabs></BannerTabs>
+      <OurServices></OurServices>
     </div>
   );
 };
