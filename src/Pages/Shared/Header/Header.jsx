@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch(() => {});
+  };
+
   return (
     <div className="navbar bg-base-100 h-24 mb-8">
       <div className="navbar-start">
@@ -102,10 +111,25 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <FaUserAlt></FaUserAlt>
-        <Link to="/login">
-          <button className="btn btn-sm btn-ghost">Login</button>
-        </Link>
+        {user ? (
+          <img
+            title={user?.displayName}
+            src={`${user?.photoURL}`}
+            className="w-10 h-10 rounded-full"
+            alt=""
+          />
+        ) : (
+          <FaUserAlt></FaUserAlt>
+        )}
+        {user ? (
+          <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm btn-ghost">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import registerLottie from "../../../assets/registerAnimation.json";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -20,6 +25,7 @@ const Register = () => {
         const createdUser = result.user;
         form.reset();
         Swal.fire("Register Successfully!", " ", "success");
+        navigate(from, { replace: true });
         updateUserData(result.user, name, photo);
       })
       .catch((error) => {
