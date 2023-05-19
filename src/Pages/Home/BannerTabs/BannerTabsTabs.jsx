@@ -43,35 +43,6 @@ const BannerTabs = () => {
         ))}
       </div>
     </div>
-    // <Tabs className="text-center">
-    //   <TabList>
-    //     <Tab onClick={() => handleTabClick("Cat")}>Cat</Tab>
-    //     <Tab onClick={() => handleTabClick("Dog")}>Dog</Tab>
-    //     <Tab onClick={() => handleTabClick("Horse")}>Horse</Tab>
-    //   </TabList>
-
-    //   <TabPanel>
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       {categoryToys.map((toy) => (
-    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
-    //       ))}
-    //     </div>
-    //   </TabPanel>
-    //   <TabPanel>
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       {categoryToys.map((toy) => (
-    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
-    //       ))}
-    //     </div>
-    //   </TabPanel>
-    //   <TabPanel>
-    //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
-    //       {categoryToys.map((toy) => (
-    //         <SingleTab key={toy._id} toy={toy}></SingleTab>
-    //       ))}
-    //     </div>
-    //   </TabPanel>
-    // </Tabs>
   );
 };
 
