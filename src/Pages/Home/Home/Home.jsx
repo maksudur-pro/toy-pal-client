@@ -2,14 +2,16 @@ import React from "react";
 import BannerTabs from "../BannerTabs/BannerTabsTabs";
 import AnimalToyBanner from "../AnimalToyBanner/AnimalToyBanner";
 import OurServices from "../OurServices/OurServices";
-import DealCarousel from "../DealCarousel/DealCarousel";
+import OurBest from "../OurBest/OurBest";
+import Gallery from "../Gallery/Gallery";
 
 const Home = () => {
   return (
     <div>
       <AnimalToyBanner></AnimalToyBanner>
       <BannerTabs></BannerTabs>
-      <DealCarousel></DealCarousel>
+      <OurBest></OurBest>
+      <Gallery></Gallery>
       <OurServices></OurServices>
     </div>
   );

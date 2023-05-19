@@ -11,30 +11,27 @@ const AllToys = () => {
   }, []);
 
   return (
-    <div>
-      <h1>this is all toys {toys.length}</h1>
-      <div className="container mx-auto">
-        <h1 className="text-2xl font-bold mb-4">All Toys</h1>
-        <table className="w-full border-collapse">
-          <thead>
-            <tr>
-              <th className="p-2 border">Seller</th>
-              <th className="p-2 border">Toy Name</th>
-              <th className="p-2 border">Sub-category</th>
-              <th className="p-2 border">Price</th>
-              <th className="p-2 border">Available Quantity</th>
-              <th className="p-2 border">Actions</th>
+    <div className="container mx-auto">
+      <h1 className="text-2xl font-bold mb-4">All Toys</h1>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr>
+            <th className="p-2 border">Seller</th>
+            <th className="p-2 border">Toy Name</th>
+            <th className="p-2 border">Sub-category</th>
+            <th className="p-2 border">Price</th>
+            <th className="p-2 border">Available Quantity</th>
+            <th className="p-2 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {toys.map((toy) => (
+            <tr key={toy._id}>
+              <ToyCard toy={toy}></ToyCard>
             </tr>
-          </thead>
-          <tbody>
-            {toys.map((toy) => (
-              <tr key={toy._id} toy={toy}>
-                <ToyCard></ToyCard>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

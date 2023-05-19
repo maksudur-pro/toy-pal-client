@@ -48,6 +48,13 @@ const Header = () => {
               }>
               All Toys
             </NavLink>
+            <NavLink
+              to="/myToys"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500" : "default"
+              }>
+              My Toys
+            </NavLink>
 
             <NavLink
               to="/addtoys"
@@ -90,6 +97,14 @@ const Header = () => {
             }
             style={{ marginRight: "10px" }}>
             All Toys
+          </NavLink>
+          <NavLink
+            to="/myToys"
+            className={({ isActive }) =>
+              isActive ? "text-blue-500" : "default"
+            }
+            style={{ marginRight: "10px" }}>
+            My Toys
           </NavLink>
 
           <NavLink

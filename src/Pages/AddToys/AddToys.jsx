@@ -15,7 +15,7 @@ const AddToys = () => {
     const seller_email = form.seller_email.value;
     const sub_category = form.sub_category.value;
     const description = form.description.value;
-    const available_quantity = form.available_quantity.value;
+    const quantity = form.quantity.value;
     const newToy = {
       img,
       toy_name,
@@ -25,7 +25,7 @@ const AddToys = () => {
       seller_email,
       sub_category,
       description,
-      available_quantity,
+      quantity,
     };
     console.log(newToy);
     fetch("http://localhost:5000/addtoy", {
@@ -100,7 +100,7 @@ const AddToys = () => {
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              name="available_quantity"
+              name="quantity"
               required
               type="number"
               placeholder="Enter quantity"
