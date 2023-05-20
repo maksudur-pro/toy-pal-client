@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const MyToyCard = ({ toy }) => {
+const MyToyCard = ({ toy, handleDelete }) => {
   const {
     seller_name,
     toy_name,
@@ -22,9 +22,12 @@ const MyToyCard = ({ toy }) => {
       <td className="p-2 border text-center">{quantity}</td>
       <td className="p-2 border text-center">{description.slice(0, 20)}</td>
       <td className="p-2 border text-center">
-        <button className="px-4 mr-4 py-2 btn-error text-white rounded-md">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="px-4 mr-4 py-2 btn-error text-white rounded-md">
           Delete
         </button>
+
         <Link to={`/update/${_id}`}>
           <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
             Update
