@@ -19,7 +19,13 @@ const BannerTabs = () => {
   };
   return (
     <div className="text-center mt-4">
-      <h1 className="text-5xl font-bold mb-4">Deal Of The Day</h1>
+      <h2 className="text-5xl font-bold text-gray-800 mb-6 text-center">
+        Explore Our Animal Toy Collection
+      </h2>
+      <p className="text-lg text-gray-600 mb-12 text-center">
+        Discover a wide range of animal toys that spark joy and inspire
+        imagination.
+      </p>
       <div className=" tabs-boxed ">
         <button
           onClick={() => handleTabClick("Cat")}

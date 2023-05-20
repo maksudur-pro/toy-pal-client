@@ -8,10 +8,10 @@ import Gallery from "../Gallery/Gallery";
 const Home = () => {
   return (
     <div>
-      <AnimalToyBanner></AnimalToyBanner>
       <BannerTabs></BannerTabs>
       <OurBest></OurBest>
       <Gallery></Gallery>
+      <AnimalToyBanner></AnimalToyBanner>
       <OurServices></OurServices>
     </div>
   );
