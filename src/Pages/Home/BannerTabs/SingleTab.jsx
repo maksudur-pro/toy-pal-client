@@ -22,7 +22,7 @@ const SingleTab = ({ toy }) => {
           />
           <span className="text-black-600 ml-2">{rating}</span>
         </div>
-        <Link to={`/singleToy/${_id}`}>
+        <Link to={`/details/${_id}`}>
           <button className="bg-pink-400 hover:bg-pink-500 text-white py-2 px-4 rounded-full text-sm font-semibold">
             View Details
           </button>
