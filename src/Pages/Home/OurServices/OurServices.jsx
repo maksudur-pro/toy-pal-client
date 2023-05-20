@@ -7,7 +7,11 @@ import quality from "../../../assets/quality.json";
 
 const OurServices = () => {
   return (
-    <section className=" py-10">
+    <section
+      data-aos="zoom-in"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="1000"
+      className=" py-10">
       <div className="container mx-auto px-4">
         <h2 className="text-5xl font-bold text-center mb-8">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

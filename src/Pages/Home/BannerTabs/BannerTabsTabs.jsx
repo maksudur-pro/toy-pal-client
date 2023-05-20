@@ -43,7 +43,11 @@ const BannerTabs = () => {
           Horse
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
+      <div
+        data-aos="fade-up"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center gap-3">
         {categoryToys.map((toy) => (
           <SingleTab key={toy._id} toy={toy}></SingleTab>
         ))}

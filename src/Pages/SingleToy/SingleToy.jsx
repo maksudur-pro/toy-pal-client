@@ -61,7 +61,11 @@ const SingleToy = () => {
             <li>Encourages creativity and imagination</li>
             <li>Suitable for children aged 3 and above</li>
           </ul>
-          <button className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition duration-300 mt-8">
+          <button
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+            className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition duration-300 mt-8">
             Buy Now
           </button>
         </div>
