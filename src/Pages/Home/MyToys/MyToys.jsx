@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import MyToyCard from "./MyToyCard";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import DataTable from "react-data-table-component";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -42,33 +43,72 @@ const MyToys = () => {
     });
   };
 
+  const columns = [
+    {
+      name: "Name",
+      selector: (row) => row.seller_name,
+    },
+    {
+      name: "Email",
+      selector: (row) => row.seller_email,
+    },
+    {
+      name: "Toy Name",
+      selector: (row) => row.toy_name,
+    },
+    {
+      name: "Price",
+      selector: (row) => row.price,
+      sortable: true,
+    },
+    {
+      name: "Category",
+      selector: (row) => row.sub_category,
+    },
+    {
+      name: "Available Quantity",
+      selector: (row) => row.quantity,
+    },
+    {
+      name: "Details",
+      selector: (row) => row.description.slice(0, 20),
+    },
+    {
+      name: "Delete",
+      selector: (row) => (
+        <button
+          onClick={() => handleDelete(row._id)}
+          className="px-4 mr-4 py-2 btn-error text-white rounded-md">
+          Delete
+        </button>
+      ),
+    },
+    {
+      name: "Update",
+      selector: (row) => (
+        <Link to={`/update/${row._id}`}>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded-md">
+            Update
+          </button>
+        </Link>
+      ),
+    },
+  ];
+
   return (
     <HelmetProvider>
       <Helmet>
         <title>My Toys</title>
       </Helmet>
+      <h1 className="text-center text-4xl font-bold mb-6">My Toys</h1>
       <div className="mb-10">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr>
-              <th className="p-2 border">Name</th>
-              <th className="p-2 border">Email</th>
-              <th className="p-2 border">Toy Name</th>
-              <th className="p-2 border">Price</th>
-              <th className="p-2 border">Category</th>
-              <th className="p-2 border">Available Quantity</th>
-              <th className="p-2 border">Details</th>
-              <th className="p-2 border">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myToys.map((toy) => (
-              <tr key={toy._id}>
-                <MyToyCard toy={toy} handleDelete={handleDelete}></MyToyCard>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          pagination
+          fixedHeader
+          highlightOnHover
+          columns={columns}
+          data={myToys}
+        />
       </div>
     </HelmetProvider>
   );
