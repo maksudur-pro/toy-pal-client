@@ -12,6 +12,8 @@ import Details from "../Layout/Details";
 import MyToyCard from "../Pages/Home/MyToys/MyToyCard";
 import UpdateToys from "../Pages/Home/MyToys/UpdateToys";
 import PrivateRoute from "./PrivateRoute";
+import BlogPage from "../Pages/BlogPage/BlogPage";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +22,6 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
-      },
-      {
-        path: "about",
         element: <Home></Home>,
       },
       {
@@ -57,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "myToyCard",
         element: <MyToyCard></MyToyCard>,
+      },
+      {
+        path: "blog",
+        element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "about",
+        element: <About></About>,
       },
       {
         path: "/update/:id",
