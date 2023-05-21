@@ -7,7 +7,7 @@ const BannerTabs = () => {
   const [toyCategory, setToyCategory] = useState("Cat");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${toyCategory}`)
+    fetch(`https://toy-pal-server.vercel.app/toys/${toyCategory}`)
       .then((res) => res.json())
       .then((data) => {
         setCategoryToys(data.slice(0, 3));

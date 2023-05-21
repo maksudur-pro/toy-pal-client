@@ -6,6 +6,7 @@ import OurBest from "../OurBest/OurBest";
 import Gallery from "../Gallery/Gallery";
 import LazyLoad from "react-lazy-load";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import ToyPalBanner from "../ToyPalBanner/ToyPalBanner";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -27,6 +28,7 @@ const Home = () => {
 
   return (
     <div>
+      <ToyPalBanner></ToyPalBanner>
       <BannerTabs></BannerTabs>
       <OurBest></OurBest>
       <Gallery></Gallery>

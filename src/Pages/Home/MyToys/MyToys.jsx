@@ -7,13 +7,14 @@ import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
-
+  // data fetch method
   useEffect(() => {
-    fetch(`http://localhost:5000/myToys/${user?.email}`)
+    fetch(`https://toy-pal-server.vercel.app/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user]);
 
+  // Delete method
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -25,7 +26,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${id}`, {
+        fetch(`https://toy-pal-server.vercel.app/toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -42,7 +43,7 @@ const MyToys = () => {
   };
 
   return (
-    <div>
+    <div className="mb-10">
       <table className="w-full border-collapse">
         <thead>
           <tr>

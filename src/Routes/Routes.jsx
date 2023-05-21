@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdateToys></UpdateToys>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(`https://toy-pal-server.vercel.app/details/${params.id}`),
       },
     ],
   },
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(`https://toy-pal-server.vercel.app/details/${params.id}`),
       },
     ],
   },

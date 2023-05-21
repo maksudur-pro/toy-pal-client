@@ -21,7 +21,7 @@ const OurBest = () => {
           <div>
             <Link
               to="/allToys"
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">
+              className="inline-flex btn btn-primary items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">
               See more
               <svg
                 className="inline-block w-3 ml-2"
