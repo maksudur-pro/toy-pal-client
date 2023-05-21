@@ -9,7 +9,6 @@ import MyToys from "../Pages/Home/MyToys/MyToys";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import SingleToy from "../Pages/SingleToy/SingleToy";
 import Details from "../Layout/Details";
-import MyToyCard from "../Pages/Home/MyToys/MyToyCard";
 import UpdateToys from "../Pages/Home/MyToys/UpdateToys";
 import PrivateRoute from "./PrivateRoute";
 import BlogPage from "../Pages/BlogPage/BlogPage";
@@ -52,10 +51,6 @@ const router = createBrowserRouter([
             <MyToys></MyToys>
           </PrivateRoute>
         ),
-      },
-      {
-        path: "myToyCard",
-        element: <MyToyCard></MyToyCard>,
       },
       {
         path: "blog",
