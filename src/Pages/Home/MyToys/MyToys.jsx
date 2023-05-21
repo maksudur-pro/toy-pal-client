@@ -107,6 +107,7 @@ const MyToys = () => {
         <DataTable
           pagination
           fixedHeader
+          fixedHeaderScrollHeight="400px"
           highlightOnHover
           columns={columns}
           data={myToys}
