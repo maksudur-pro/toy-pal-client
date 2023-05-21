@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import ToyCard from "./ToyCard";
 
 const AllToys = () => {
-  const [toys, setToys] = useState([]);
+  const toys = useLoaderData();
+  const [searchValue, setSearchValue] = useState("");
+  const [filterToys, setFilterToys] = useState([]);
 
-  useEffect(() => {
-    fetch("https://toy-pal-server.vercel.app/toys")
-      .then((res) => res.json())
-      .then((data) => setToys(data));
-  }, []);
+  const handleSearchInput = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    const result = toys.filter((toy) => {
+      const toyName = toy.toy_name || "";
+      const search = searchValue || "";
+      return toyName.toLowerCase().includes(search.toLowerCase());
+    });
+    setFilterToys(result);
+  };
 
   return (
     <div className="container mx-auto">
@@ -18,10 +28,12 @@ const AllToys = () => {
           <div className="input-group">
             <input
               type="text"
+              value={searchValue}
+              onChange={handleSearchInput}
               placeholder="Search…"
               className="input input-bordered"
             />
-            <button className="btn btn-square">
+            <button onClick={handleSearch} className="btn btn-square">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -51,11 +63,17 @@ const AllToys = () => {
           </tr>
         </thead>
         <tbody>
-          {toys.map((toy) => (
-            <tr key={toy._id}>
-              <ToyCard toy={toy}></ToyCard>
-            </tr>
-          ))}
+          {searchValue && filterToys.length > 0
+            ? filterToys.map((toy) => (
+                <tr key={toy._id}>
+                  <ToyCard toy={toy}></ToyCard>
+                </tr>
+              ))
+            : toys.map((toy) => (
+                <tr key={toy._id}>
+                  <ToyCard toy={toy}></ToyCard>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>

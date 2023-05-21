@@ -43,6 +43,7 @@ const router = createBrowserRouter([
       {
         path: "allToys",
         element: <AllToys></AllToys>,
+        loader: () => fetch("https://toy-pal-server.vercel.app/toys"),
       },
       {
         path: "myToys",
