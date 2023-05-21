@@ -45,6 +45,10 @@ const MyToys = () => {
 
   const columns = [
     {
+      name: "Image",
+      selector: (row) => <img src={row.img} />,
+    },
+    {
       name: "Name",
       selector: (row) => row.seller_name,
     },
