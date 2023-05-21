@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import MyToyCard from "./MyToyCard";
 import Swal from "sweetalert2";
@@ -43,29 +43,34 @@ const MyToys = () => {
   };
 
   return (
-    <div className="mb-10">
-      <table className="w-full border-collapse">
-        <thead>
-          <tr>
-            <th className="p-2 border">Name</th>
-            <th className="p-2 border">Email</th>
-            <th className="p-2 border">Toy Name</th>
-            <th className="p-2 border">Price</th>
-            <th className="p-2 border">Category</th>
-            <th className="p-2 border">Available Quantity</th>
-            <th className="p-2 border">Details</th>
-            <th className="p-2 border">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {myToys.map((toy) => (
-            <tr key={toy._id}>
-              <MyToyCard toy={toy} handleDelete={handleDelete}></MyToyCard>
+    <HelmetProvider>
+      <Helmet>
+        <title>My Toys</title>
+      </Helmet>
+      <div className="mb-10">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr>
+              <th className="p-2 border">Name</th>
+              <th className="p-2 border">Email</th>
+              <th className="p-2 border">Toy Name</th>
+              <th className="p-2 border">Price</th>
+              <th className="p-2 border">Category</th>
+              <th className="p-2 border">Available Quantity</th>
+              <th className="p-2 border">Details</th>
+              <th className="p-2 border">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {myToys.map((toy) => (
+              <tr key={toy._id}>
+                <MyToyCard toy={toy} handleDelete={handleDelete}></MyToyCard>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </HelmetProvider>
   );
 };
 

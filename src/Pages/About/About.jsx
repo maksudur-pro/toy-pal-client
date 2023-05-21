@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const About = () => {
   const data = [
@@ -20,19 +21,24 @@ const About = () => {
     // Add more question-answer pairs as needed
   ];
   return (
-    <div className="container mx-auto py-12">
-      <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-        Frequently Asked Questions
-      </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {data.map((item, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4">{item.question}</h3>
-            <p className="text-gray-700">{item.answer}</p>
-          </div>
-        ))}
+    <HelmetProvider>
+      <Helmet>
+        <title>About</title>
+      </Helmet>
+      <div className="container mx-auto py-12">
+        <h2 className="text-4xl font-bold text-gray-800 mb-8 text-center">
+          Frequently Asked Questions
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {data.map((item, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4">{item.question}</h3>
+              <p className="text-gray-700">{item.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 

@@ -7,6 +7,7 @@ import Gallery from "../Gallery/Gallery";
 import LazyLoad from "react-lazy-load";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import ToyPalBanner from "../ToyPalBanner/ToyPalBanner";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);
@@ -27,14 +28,17 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <HelmetProvider>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <ToyPalBanner></ToyPalBanner>
       <BannerTabs></BannerTabs>
       <OurBest></OurBest>
       <Gallery></Gallery>
       <AnimalToyBanner></AnimalToyBanner>
       <OurServices></OurServices>
-    </div>
+    </HelmetProvider>
   );
 };
 
